@@ -1,5 +1,10 @@
-package DSA.Arrays;
+package DSA.Sortings;
 import java.util.*;
+
+/*
+*  Time Complexity : O(n^2),  Space Complexity : O(1),  Stability : No, Internal Sorting Algorithm and Non-recursive
+ */
+
 public class SelectionSort {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -14,8 +19,8 @@ public class SelectionSort {
         /*
         System.out.print("Array after sorting is : " + SelectAndSort(ar,ar.size()));
 
-        if we use the above one print statement, we can just make the "SelectAndSort" Function return type to ArrayList
-        As ArrayList is a Non-primitive or reference DataType its reference is passed So changes made at any function
+        if we use the above print statement, we can just make the "SelectAndSort" Function return type to ArrayList
+        As ArrayList is a Non-primitive or reference DataType its reference is passed So changes made at function
         are permanently made.
          */
         //System.out.print("Array after sorted is : " + ar);

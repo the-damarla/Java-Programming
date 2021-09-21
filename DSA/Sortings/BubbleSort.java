@@ -1,5 +1,10 @@
-package DSA.Arrays;
+package DSA.Sortings;
 import java.util.*;
+
+/*
+* Time Complexity : O(n^2),  Space Complexity : O(1),  Stability : Yes, Internal Sorting Algorithm and Non-recursive
+*/
+
 public class BubbleSort {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
