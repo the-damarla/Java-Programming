@@ -1,4 +1,4 @@
-package com.company;
+package Basics;
 import java.util.*;
 public class LargestAmongThree {
     public static void main(String[] args) {

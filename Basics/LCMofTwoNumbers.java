@@ -1,4 +1,4 @@
-package com.company;
+package Basics;
 import java.util.*;
 public class LCMofTwoNumbers {
     public static void main(String[] args) {

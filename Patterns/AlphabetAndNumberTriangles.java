@@ -41,6 +41,14 @@ import java.util.*;
 1 2 3 4 5  5 4 3 2 1
 
 
+1 2 3 4 5     26 27 28 29 30  ---> getBiPartedContinuousTriangle(n) //(PS : Ignore the Spaces)
+  6 7 8 9     22 23 24 25
+  10 11 12    19 20 21
+     13 14    17 18
+        15    16
+
+
+
 a                   ---> getLeftAplhaTriangle(n)
 a b
 a b c
@@ -78,10 +86,28 @@ public class AlphabetAndNumberTriangles {
         getLeftInverted(n);System.out.println();
         getNumTriangle(n);System.out.println();
         getBiPartedNumberTriangle(n);System.out.println();
+        getBiPartedContinuousTriangle(n);System.out.println();
         getLeftAplhaTriangle(n);System.out.println();
         getLeftDecrementingAlphaTriangle(n);System.out.println();
         getLeftDecrementingAlphaTriangleInverted(n);System.out.println();
         getLeftAlphaAlternateCapsTriangle(n);System.out.println();
+    }
+
+    private static void getBiPartedContinuousTriangle(int n) {
+        int totCols = 2*n;
+        int leftCol = 1;
+        int rightCol = n*(n) + 1;
+        for(int rows=0;rows<n;rows++)
+        {
+            int printRight = rightCol;
+            for(int spaces=0;spaces<rows;spaces++)System.out.print("  ");
+            for(int cols=0;cols<totCols;cols++)
+                if(cols < (n - rows)) System.out.print(leftCol++ + " ");
+                else System.out.print(printRight++ + " ");
+            System.out.print("\n");
+            totCols -= 2;
+            rightCol -= (n-rows) - 1;
+        }
     }
 
     private static void getBiPartedNumberTriangle(int n) {

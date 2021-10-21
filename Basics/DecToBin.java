@@ -1,4 +1,4 @@
-package com.company;
+package Basics;
 import java.util.*;
 public class DecToBin {
     public static void main(String[] args) {

@@ -1,6 +1,11 @@
 package DSA.Searchings.LinearSearchAndApplications;
 import java.util.*;
 
+/*
+ * Test Cases : i/p --->  21 344 45 667722 123 4567
+ *              o/p ---> 21 45 667722 4567
+*/
+
 public class NoOfNosWithEvenNoOfDigits {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
