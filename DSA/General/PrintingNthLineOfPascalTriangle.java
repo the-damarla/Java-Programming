@@ -5,6 +5,7 @@ public class PrintingNthLineOfPascalTriangle {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the line : ");int num = sc.nextInt();
         System.out.print(num + "th line of Pascal triangle is : " );PrintnthLine(num);
+        System.out.print("\nThe sum of the " + num + "th line is : " + Math.pow(2,num));
     }
 
     private static void PrintnthLine(int num) {

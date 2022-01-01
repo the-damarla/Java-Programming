@@ -2,14 +2,13 @@ package BitWise;
 import java.util.*;
 
 /*
-        Test Case :  i/p ---> Base : 2, number : 10    i/p ---> Base : 3, number : 4
-                     o/p ---> 1024                    o/p ---> 81
+        Test Case :  i/p ---> Base : 5, number : 3    i/p ---> Base : 3, number : 4
+                     o/p ---> 30                      o/p ---> 81
 
                    * We will be taking every number in its Binary Format and Calculate its value with base value
-                   * Example -> number --> 4 Base --> 3   number Binary Format is 1 0 0
-                   * 1 0 0 ---> as (1 0 0 & 0 0 1) -> 0 ans won't get updated,  1 0 0 >> 1 --> 1 0, base becomes 3 * 3 = 9
-                   * 1 0 ---> as (1 0 & 0 1) -> 0 ans won't get updated, 1 0 >> 1 --> 1, base 9 * 9 = 81
-                   * 1 ---> as (1 & 1) -> 1 ans becomes 1 * base i.e, 1 * 81, 1 >> 1 --> 0 base = 81 * 81
+                   * Example -> number --> 3 Base --> 5   number Binary Format is 1 1
+                   * 1 1 ---> as (1 1 & 0 0 1) -> 1 ans becomes ans+base = 5,  1 1 >> 1 --> 1 , base becomes 5 * 5 = 25
+                   * 1 ---> as (1 & 1) -> 1 ans becomes ans+base = 30, 1 >> 1 --> 0, base 25 * 5 = 125
                    * 0 while loop gets terminated ans will be returned
 
          NOTE : >> -> LeftShift
@@ -25,10 +24,10 @@ public class MagicNumber {
     }
 
     private static int getMagicNumber(int num, int base) {
-        int ans = 1;
+        int ans = 0;
         while (num > 0)
         {
-            if((num & 1) == 1)ans *= base;
+            if((num & 1) == 1)ans += base;
             base *= base;
             num >>= 1;
         }

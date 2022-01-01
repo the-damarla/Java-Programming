@@ -48,6 +48,20 @@ import java.util.*;
         15    16
 
 
+     1                          ---> getHosoyaTriangleNumeric(n)
+    1 1
+   2 1 2
+  3 2 2 3
+ 5 3 4 3 5
+8 5 6 6 5 8
+
+     a                          ---> getHosoyaTriangleNumeric(n)
+    a a
+   b a b
+  c b b c
+ e c d c e
+h e f f e h
+
 
 a                   ---> getLeftAplhaTriangle(n)
 a b
@@ -87,13 +101,70 @@ public class AlphabetAndNumberTriangles {
         getNumTriangle(n);System.out.println();
         getBiPartedNumberTriangle(n);System.out.println();
         getBiPartedContinuousTriangle(n);System.out.println();
+        getHosoyaTriangleNumeric(n);System.out.println();
         getLeftAplhaTriangle(n);System.out.println();
         getLeftDecrementingAlphaTriangle(n);System.out.println();
         getLeftDecrementingAlphaTriangleInverted(n);System.out.println();
         getLeftAlphaAlternateCapsTriangle(n);System.out.println();
     }
 
+    private static void getHosoyaTriangleNumeric(int n) {
+        int[][] dp = new int[n][n];
+        /*
+             1
+            1 1
+           2 1 2
+          3 2 2 3
+         5 3 4 3 5
+        8 5 6 6 5 8
+
+        */
+        dp[0][0] = dp[1][0] = dp[1][1] = 1;
+        for(int i=2;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+                if(i > j)dp[i][j] = dp[i-1][j] + dp[i-2][j];
+                else dp[i][j] = dp[i-1][j-1] + dp[i-2][j-2];
+        }
+        int NoOfSpaces = n-1;
+        for(int i=0;i<n;i++)
+        {
+            for(int spaces=0;spaces<NoOfSpaces;spaces++)System.out.print(" ");
+            for(int j=0;j<=i;j++)
+                System.out.print(dp[i][j] + " ");
+            System.out.println();
+            NoOfSpaces--;
+        }
+        System.out.println();
+        /*
+
+             a
+            a a
+           b a b
+          c b b c
+         e c d c e
+        h e f f e h
+
+        */
+        NoOfSpaces = n-1;
+        for(int i=0;i<n;i++)
+        {
+            for(int spaces=0;spaces<NoOfSpaces;spaces++)System.out.print(" ");
+            for(int j=0;j<=i;j++)
+                System.out.print((char)('a' + dp[i][j] - 1) + " ");
+            System.out.println();
+            NoOfSpaces--;
+        }
+    }
+
     private static void getBiPartedContinuousTriangle(int n) {
+        /*
+         1 2 3 4 5   26 27 28 29 30  ---> getBiPartedContinuousTriangle(n) //(PS : Ignore the Spaces)
+           6 7 8 9   22 23 24 25
+          10 11 12   19 20 21
+             13 14   17 18
+                15   16
+         */
         int totCols = 2*n;
         int leftCol = 1;
         int rightCol = n*(n) + 1;
@@ -111,6 +182,15 @@ public class AlphabetAndNumberTriangles {
     }
 
     private static void getBiPartedNumberTriangle(int n) {
+        /*
+
+            1                  1    ---> getBiPartedNumberTriangle(n)
+            1 2              2 1
+            1 2 3          3 2 1
+            1 2 3 4      4 3 2 1
+            1 2 3 4 5  5 4 3 2 1
+
+        */
         for(int rows=1;rows<=n;rows++)
         {
             int numOfSpaces = n - rows;
@@ -122,6 +202,13 @@ public class AlphabetAndNumberTriangles {
     }
 
     private static void getNumTriangle(int n) {
+        /*
+                1            --->getNumTriangle(n)
+              2 1 2
+            3 2 1 2 3
+          4 3 2 1 2 3 4
+        5 4 3 2 1 2 3 4 5
+        */
         for(int rows=1;rows<=n;rows++)
         {
             int totSpaces = n-rows;
@@ -130,6 +217,22 @@ public class AlphabetAndNumberTriangles {
             for(int cols=2;cols<=rows;cols++)System.out.print(cols + " ");
             System.out.print("\n");
         }
+        /*
+                1
+              1 2 1
+            1 2 3 2 1
+          1 2 3 4 3 2 1
+        1 2 3 4 5 4 3 2 1
+
+        for(int rows=1;rows<=n;rows++)
+        {
+            int totSpaces = n-rows;
+            for(int spaces=0;spaces<totSpaces;spaces++)System.out.print("  ");
+            for(int cols=1;cols<=rows;cols++)System.out.print(cols + " ");
+            for(int cols=rows-1;cols>=1;cols--)System.out.print(cols + " ");
+            System.out.print("\n");
+        }
+        */
     }
 
     private static void getLeftAlphaAlternateCapsTriangle(int n) {
@@ -175,7 +278,7 @@ public class AlphabetAndNumberTriangles {
     }
 
     private static void getTriangleOfZeroAndOnes(int n) {
-        boolean flag = true;
+        boolean flag;
         for(int rows=0;rows<n;rows++)
         {
             flag = (rows % 2 == 0);

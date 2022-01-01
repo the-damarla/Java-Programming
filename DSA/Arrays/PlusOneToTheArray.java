@@ -16,10 +16,10 @@ public class PlusOneToTheArray {
             if(x == -1)break;
             ar.add(x);
         }
-        System.out.print("After Adding +1 to the given array : " + GetAfterPlusOne(ar, ar.size()));
+        System.out.print("After Adding +1 to the given array : " + getAfterPlusOne(ar, ar.size()));
     }
 
-    private static ArrayList<Integer> GetAfterPlusOne(ArrayList<Integer> ar, int n) {
+    private static ArrayList<Integer> getAfterPlusOne(ArrayList<Integer> ar, int n) {
         for(int i=n-1;i>=0;i--)
         {
             if(ar.get(i) < 9)
@@ -30,22 +30,11 @@ public class PlusOneToTheArray {
             ar.set(i,0);
             if(i == 0)
             {
-                GetReverse(ar, ar.size());
+                Collections.reverse(ar);
                 ar.add(1);
-                GetReverse(ar, ar.size());
+                Collections.reverse(ar);
             }
         }
         return ar;
-    }
-
-    private static void GetReverse(ArrayList<Integer> ar, int n) {
-        int i = 0,j=n-1;
-        while(i < j)
-        {
-            int temp = ar.get(i);
-            ar.set(i, ar.get(j));
-            ar.set(j, temp);
-            i++;j--;
-        }
     }
 }
