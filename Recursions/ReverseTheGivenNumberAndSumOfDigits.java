@@ -10,12 +10,12 @@ public class ReverseTheGivenNumberAndSumOfDigits {
     }
 
     private static int getSumOfDigits(int num, int sum) {
-        if(num == 0)return sum + num%10;
+        if(num == 0)return sum + num % 10;
         return getSumOfDigits(num/10,sum+num%10);
     }
 
     private static int getReverse(int num, int rem, int sum) {
-        if(num == 0) return sum*10+rem;
+        if(num == 0) return sum * 10 + rem;
         return getReverse(num/10,num%10,sum*10+rem);
     }
 }
